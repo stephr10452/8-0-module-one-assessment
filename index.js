@@ -31,7 +31,7 @@ const exampleMovies = require("./movies");
 function getAllMovieTitles(movies) {
   let allMoviesArr = [];
   if(!movies.length){
-    return moviesArr;
+    return allMoviesArr;
   }
   for(let i = 0;i < movies.length;i++){
      allMoviesArr.push(movies[i].title)
@@ -57,7 +57,7 @@ function getHighestMetascore(movies) {
   }
   for(let i = 0; i < movies.length;i++){
     if(movies[i].metascore > highestMetascore){
-      highestMetascore = movies[i].metascore;
+      highestMetascore = Number(movies[i].metascore);
     }
   }
   return highestMetascore
@@ -133,12 +133,12 @@ function findById(movies, id) {
   }
   for(let i = 0;i<movies.length;i++){
     if(movies[i].imdbID===id){
-      return movies[i].title
+      return movies[i]
     }
   }
   return null
 }
-console.log(findById(exampleMovies, "tt2096673"))
+//console.log(findById(exampleMovies, "tt2096673"))
 
 /**
  * filterByGenre()
@@ -160,7 +160,22 @@ console.log(findById(exampleMovies, "tt2096673"))
  *  filterByGenre(movies, "Horror")
  *  //> []
  */
-function filterByGenre() {}
+function filterByGenre(movies,genre) {
+  let genreArr = [];
+  let genrelow = genre.toLowerCase();
+  if(!movies.length){
+    return genreArr;
+  }
+  for(let i = 0;i < movies.length;i++){
+    let typeofMovie = movies[i].genre.toLowerCase();
+     if(typeofMovie.includes(genrelow)){
+       genreArr.push(movies[i])
+     }
+  }
+  return genreArr
+}
+//console.log(filterByGenre(exampleMovies,"Mystery"))
+
 
 /**
  * getAllMoviesReleasedAtOrBeforeYear()
@@ -184,7 +199,19 @@ function filterByGenre() {}
       }
     ];
  */
-function getAllMoviesReleasedAtOrBeforeYear() {}
+function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
+  let moviesArr = [];
+  for(let i = 0; i < movies.length;i++){
+    let moviereleases = Number(movies[i].released)
+     if(moviereleases>=year){
+         moviesArr.push(movies[i]);
+     }
+  }
+  return moviesArr
+}
+//console.log(getAllMoviesReleasedAtOrBeforeYear(exampleMovies,2017))
+
+
 
 /**
  * getBiggestBoxOfficeMovie()
@@ -197,7 +224,15 @@ function getAllMoviesReleasedAtOrBeforeYear() {}
  *  getBiggestBoxOfficeMovie(movies);
  *  //> "Incredibles 2"
  */
-function getBiggestBoxOfficeMovie() {}
+function getBiggestBoxOfficeMovie(movies) {
+  let nameofMovies = '';
+  let highestNumber = 0;
+  for(let i=0;i < movies.length;i++){
+  }
+  return nameofMovies
+}
+//console.log(getBiggestBoxOfficeMovie(exampleMovies))
+
 
 // Do not change anything below this line.
 module.exports = {
