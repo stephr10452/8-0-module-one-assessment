@@ -38,7 +38,7 @@ function getAllMovieTitles(movies) {
   }
   return allMoviesArr;
 }
-console.log(getAllMovieTitles(exampleMovies))
+//console.log(getAllMovieTitles(exampleMovies))
 /**
  * getHighestMetascore()
  * -----------------------------
@@ -50,7 +50,19 @@ console.log(getAllMovieTitles(exampleMovies))
  *  getHighestMetascore(movies);
  *  //> 96
  */
-function getHighestMetascore() {}
+function getHighestMetascore(movies) {
+  let highestMetascore = 0;
+  if(!movies.length){
+    return highestMetascore;
+  }
+  for(let i = 0; i < movies.length;i++){
+    if(movies[i].metascore > highestMetascore){
+      highestMetascore = movies[i].metascore;
+    }
+  }
+  return highestMetascore
+}
+//console.log(getHighestMetascore(exampleMovies))
 
 /**
  * getAverageIMDBRating()
