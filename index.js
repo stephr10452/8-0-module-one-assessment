@@ -85,7 +85,7 @@ function getAverageIMDBRating(movies) {
   }
   return averageImdRate/movies.length
 }
-console.log(getAverageIMDBRating(exampleMovies))
+//console.log(getAverageIMDBRating(exampleMovies))
 /**
  * countByRating()
  * -----------------------------
@@ -97,7 +97,21 @@ console.log(getAverageIMDBRating(exampleMovies))
  *  countByRating(movies);
  *  //> { G: 3, PG: 7 }
  */
-function countByRating() {}
+function countByRating(movies) {
+  let countRating = {};
+  if(!movies.length){
+    return countRating
+  }
+  for(let i=0; i< movies.length;i++){
+    if(countRating[movies[i].rated]){
+      countRating[movies[i].rated] += 1
+    } else {
+      countRating[movies[i].rated] = 1
+    }
+  } 
+  return countRating
+}
+//console.log(countByRating(exampleMovies))
 
 /**
  * findById()
@@ -113,7 +127,18 @@ function countByRating() {}
       // Toy Story 4
     };
  */
-function findById() {}
+function findById(movies, id) {
+  if(!movies.length){
+    return null;
+  }
+  for(let i = 0;i<movies.length;i++){
+    if(movies[i].imdbID===id){
+      return movies[i].title
+    }
+  }
+  return null
+}
+console.log(findById(exampleMovies, "tt2096673"))
 
 /**
  * filterByGenre()
