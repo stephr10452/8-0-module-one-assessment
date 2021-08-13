@@ -31,7 +31,7 @@ const exampleMovies = require("./movies");
 function getAllMovieTitles(movies) {
   let allMoviesArr = [];
   if(!movies.length){
-    return moviesArr
+    return moviesArr;
   }
   for(let i = 0;i < movies.length;i++){
      allMoviesArr.push(movies[i].title)
